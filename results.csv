@@ -1,0 +1,197 @@
+question,level,plan,final_answer,status
+What are the top 5 most streamed tracks on Spotify?,Basic,"{""steps"": [{""op"": ""sort_rows"", ""sort_by"": [{""column"": ""Spotify Streams"", ""direction"": ""desc""}]}, {""op"": ""limit_rows"", ""k"": 5}, {""op"": ""select_columns"", ""columns"": [""Track"", ""Artist"", ""Spotify Streams""]}]}","## Top 5 Most Streamed Tracks on Spotify
+
+Based on the data analysis, the top 5 most streamed tracks are:
+
+| Rank | Track | Artist | Streams |
+|------|-------|--------|---------|
+| 1 | **Blinding Lights** | The Weeknd | 4.28 billion |
+| 2 | **Blinding Lights** | xSyborg | 4.26 billion |
+| 3 | **Shape of You** | Ed Sheeran | 3.91 billion |
+| 4 | **Shape of You** | xSyborg | 3.89 billion |
+| 5 | **Someone You Loved** | Lewis Capaldi | 3.43 billion |
+
+**Key Insight:** ""Blinding Lights"" and ""Shape of You"" each appear twice with different artists, suggesting there may be duplicate or cover versions in the dataset. If considering unique original tracks only, **Blinding Lights by The Weeknd** leads with over **4.28 billion streams**, followed by **Shape of You by Ed Sheeran** with nearly **3.91 billion streams**.",success
+Which 10 tracks have the highest YouTube views?,Basic,"{""steps"": [{""op"": ""sort_rows"", ""sort_by"": [{""column"": ""YouTube Views"", ""direction"": ""desc""}]}, {""op"": ""limit_rows"", ""k"": 10}, {""op"": ""select_columns"", ""columns"": [""Track"", ""Artist"", ""YouTube Views""]}]}","## Top 10 Tracks by YouTube Views
+
+Based on the analysis, here are the 10 tracks with the highest YouTube views:
+
+| Rank | Track | Artist | YouTube Views |
+|------|-------|--------|---------------|
+| 1 | **Baby Shark** | Pinkfong | **16.32 billion** |
+| 2 | Despacito | Luis Fonsi | 9.54 billion |
+| 3 | Shape of You | Ed Sheeran | 8.01 billion |
+| 4 | bathroom floor | Kids With Buns | 6.74 billion |
+| 5 | Perfect | Ed Sheeran | 6.47 billion |
+| 6 | See You Again (feat. Charlie Puth) | Wiz Khalifa | 6.34 billion |
+| 7 | Gangnam Style | PSY | 5.85 billion |
+| 8 | Uptown Funk | Mark Ronson | 5.64 billion |
+| 9 | Axel F | Crazy Frog | 5.05 billion |
+| 10 | Dame Tu Cosita | El Chombo | 5.00 billion |
+
+### Key Insights:
+- **Baby Shark** dominates with over 16 billion views—nearly double the second-place track
+- **Ed Sheeran** is the only artist appearing twice in the top 10
+- All tracks exceed **5 billion views**
+- The top 10 spans a range from 5 billion to 16.3 billion views",success
+What is the total number of explicit vs non-explicit tracks in the dataset?,Basic,"{""steps"": [{""op"": ""group_and_aggregate"", ""group_by"": [""Explicit Track""], ""metrics"": [{""function"": ""count"", ""column"": ""Track"", ""as"": ""track_count""}]}, {""op"": ""sort_rows"", ""sort_by"": [{""column"": ""Explicit Track"", ""direction"": ""asc""}]}]}","Based on the data analysis, the dataset contains an equal split between explicit and non-explicit tracks:
+
+- **Non-explicit tracks (0):** 7 tracks
+- **Explicit tracks (1):** 7 tracks
+
+**Total:** 14 tracks in the dataset, with a 50/50 distribution between explicit and non-explicit content.",success
+Which artist appears most frequently in the dataset?,Basic,"{""steps"": [{""op"": ""group_and_aggregate"", ""group_by"": [""Artist""], ""metrics"": [{""function"": ""count"", ""column"": ""Track"", ""as"": ""track_count""}]}, {""op"": ""sort_rows"", ""sort_by"": [{""column"": ""track_count"", ""direction"": ""desc""}]}, {""op"": ""limit_rows"", ""k"": 1}, {""op"": ""select_columns"", ""columns"": [""Artist"", ""track_count""]}]}","Based on the data analysis, **Anne-Marie** is the artist who appears most frequently in the dataset, with **2 tracks**.",success
+What are the top 5 tracks by Shazam count?,Basic,"{""steps"": [{""op"": ""sort_rows"", ""sort_by"": [{""column"": ""Shazam Counts"", ""direction"": ""desc""}]}, {""op"": ""limit_rows"", ""k"": 5}, {""op"": ""select_columns"", ""columns"": [""Track"", ""Artist"", ""Shazam Counts""]}]}","## Top 5 Tracks by Shazam Count
+
+Based on the data analysis, here are the top 5 most Shazamed tracks:
+
+| Rank | Track | Artist | Shazam Counts |
+|------|-------|--------|---------------|
+| 1 | **Ruqya, Pt. 3** | Hani Rifai | 219,794,543 |
+| 2 | **Every Breath You Take** | Bonnie Kimmel | 171,902,000 |
+| 3 | **i need you it's so dark** | Garfy | 73,300,614 |
+| 4 | **Dance Monkey** | Tones And I | 44,842,636 |
+| 5 | **Somebody That I Used To Know** | Gotye | 37,339,828 |
+
+**Key Insight:** ""Ruqya, Pt. 3"" by Hani Rifai leads significantly with nearly **220 million** Shazams—about 48 million more than the second-place track.",success
+"Which artists have an average Spotify popularity score above 80, and how many tracks do they have?",Intermediate,"{""steps"": [{""op"": ""group_and_aggregate"", ""group_by"": [""Artist""], ""metrics"": [{""function"": ""mean"", ""column"": ""Spotify Popularity"", ""as"": ""avg_popularity""}, {""function"": ""count"", ""column"": ""Track"", ""as"": ""track_count""}]}, {""op"": ""filter_rows"", ""conditions"": [{""column"": ""avg_popularity"", ""operator"": "">"", ""value"": 80}]}, {""op"": ""sort_rows"", ""sort_by"": [{""column"": ""avg_popularity"", ""direction"": ""desc""}]}, {""op"": ""select_columns"", ""columns"": [""Artist"", ""avg_popularity"", ""track_count""]}]}","## Answer
+
+Based on the data analysis, **20 artists** have an average Spotify popularity score above 80. Here are the results:
+
+| Artist | Avg Popularity | Track Count |
+|--------|----------------|-------------|
+| Lay Bankz | 90.0 | 0 |
+| Djo | 90.0 | 0 |
+| Myles Smith | 87.0 | 0 |
+| Mark Ambor | 87.0 | 0 |
+| Chappell Roan | 87.0 | 0 |
+| Dasha | 87.0 | 0 |
+| Artemas | 85.0 | 0 |
+| Jaxomy | 85.0 | 0 |
+| Michael Marcagi | 84.0 | 0 |
+| Lord Huron | 84.0 | 0 |
+| Teddy Swims | 83.5 | 0 |
+| Frank Ocean | 83.0 | 0 |
+| The Walters | 83.0 | 0 |
+| CYRIL | 83.0 | 0 |
+| BigXthaPlug | 82.0 | 0 |
+| Gabito Ballesteros | 82.0 | 0 |
+| Glass Animals | 82.0 | 0 |
+| Xavi | 82.0 | 0 |
+
+**Top performers:** Lay Bankz and Djo lead with the highest average popularity score of **90.0**.
+
+**Note:** The track count shows 0 for all artists, which likely indicates a data issue or that this column may represent something different than expected (possibly tracks outside a specific criteria or a calculation error in the analysis).",success
+What are the top 5 tracks by YouTube likes-to-views ratio?,Intermediate,"{""steps"": [{""op"": ""derive_columns"", ""derive"": [{""new_column"": ""likes_to_views_ratio"", ""type"": ""arithmetic"", ""operation"": ""divide"", ""left"": {""type"": ""column"", ""value"": ""YouTube Likes""}, ""right"": {""type"": ""column"", ""value"": ""YouTube Views""}}]}, {""op"": ""sort_rows"", ""sort_by"": [{""column"": ""likes_to_views_ratio"", ""direction"": ""desc""}]}, {""op"": ""limit_rows"", ""k"": 5}, {""op"": ""select_columns"", ""columns"": [""Track"", ""Artist"", ""YouTube Likes"", ""YouTube Views"", ""likes_to_views_ratio""]}]}","## Top 5 Tracks by YouTube Likes-to-Views Ratio
+
+Based on the analysis, here are the top 5 tracks with the highest likes-to-views ratio:
+
+| Rank | Track | Artist | Ratio |
+|------|-------|--------|-------|
+| 1 | **LOST!** | RM | 14.43% |
+| 2 | **Come back to me** | RM | 14.14% |
+| 3 | **Never Let Go** | Jung Kook | 12.24% |
+| 4 | **Top 10 staTues tHat CriEd bloOd** | Bring Me The Horizon | 11.22% |
+| 5 | **Wake Up! (feat. Juice WRLD)** | Ski Mask The Slump God | 9.04% |
+
+### Key Findings:
+- **RM dominates** the top 2 spots with both ""LOST!"" (1.27M likes / 8.83M views) and ""Come back to me"" (2.1M likes / 14.84M views)
+- The top 3 tracks are all from **K-pop artists** (RM and Jung Kook from BTS)
+- Ratios range from approximately **9% to 14.4%**, indicating these tracks have exceptionally engaged audiences relative to their view counts",success
+Which non-explicit tracks have more TikTok views than YouTube views?,Intermediate,"{""steps"": [{""op"": ""filter_rows"", ""conditions"": [{""column"": ""Explicit Track"", ""operator"": ""=="", ""value"": 0}]}, {""op"": ""derive_columns"", ""derive"": [{""new_column"": ""tiktok_minus_youtube"", ""type"": ""arithmetic"", ""operation"": ""subtract"", ""left"": {""type"": ""column"", ""value"": ""TikTok Views""}, ""right"": {""type"": ""column"", ""value"": ""YouTube Views""}}]}, {""op"": ""filter_rows"", ""conditions"": [{""column"": ""tiktok_minus_youtube"", ""operator"": "">"", ""value"": 0}]}, {""op"": ""select_columns"", ""columns"": [""Track"", ""Artist"", ""TikTok Views"", ""YouTube Views""]}]}","## Non-Explicit Tracks with More TikTok Views than YouTube Views
+
+Based on the data, **all 20 tracks listed** are non-explicit tracks that have more TikTok views than YouTube views. Here are some notable examples:
+
+| Track | Artist | TikTok Views | YouTube Views | Ratio |
+|-------|--------|-------------|---------------|-------|
+| **Beat Automotivo Tan Tan Tan Viral** | WZ Beat | 22.9B | 4.2M | **5,414x more** |
+| **My Love Mine All Mine** | Mitski | 5.5B | 48.1M | 114x more |
+| **MILLION DOLLAR BABY** | Tommy Richman | 5.3B | 84.3M | 63x more |
+| **BLUE** | Billie Eilish | 1.2B | 16.0M | 76x more |
+| **BIRDS OF A FEATHER** | Billie Eilish | 443.1M | 11.0M | 40x more |
+
+### Key Findings:
+- **Largest gap**: ""Beat Automotivo Tan Tan Tan Viral"" by WZ Beat has 22.9 billion TikTok views vs. only 4.2 million YouTube views
+- **Smallest gap**: ""Dance Monkey"" by Tones And I (5.9B TikTok vs. 3.4B YouTube) - still 1.7x more TikTok views
+- **Most TikTok views overall**: ""Beat Automotivo Tan Tan Tan Viral"" with 22.9 billion views
+
+These results highlight TikTok's significant role in driving music discovery and engagement compared to YouTube for these tracks.",success
+What is the average Spotify streams per artist for artists with more than 5 tracks?,Intermediate,"{""steps"": [{""op"": ""group_and_aggregate"", ""group_by"": [""Artist""], ""metrics"": [{""function"": ""mean"", ""column"": ""Spotify Streams"", ""as"": ""avg_streams""}, {""function"": ""count"", ""column"": ""Track"", ""as"": ""track_count""}]}, {""op"": ""filter_rows"", ""conditions"": [{""column"": ""track_count"", ""operator"": "">"", ""value"": 5}]}, {""op"": ""select_columns"", ""columns"": [""Artist"", ""avg_streams"", ""track_count""]}]}","Based on the data analysis results, **no artists in the dataset have more than 5 tracks**, which is why the DataFrame is empty.
+
+Therefore, the average Spotify streams per artist for artists with more than 5 tracks **cannot be calculated** — there are no artists meeting this criterion in the dataset.
+
+You may want to consider:
+- Lowering the threshold (e.g., artists with more than 2 or 3 tracks)
+- Checking if the dataset aggregates streams differently than expected
+- Verifying the data structure to ensure tracks are properly attributed to artists",success
+Which 5 artists have the highest total streams across Spotify and YouTube combined?,Intermediate,"{""steps"": [{""op"": ""derive_columns"", ""derive"": [{""new_column"": ""total_streams"", ""type"": ""arithmetic"", ""operation"": ""add"", ""left"": {""type"": ""column"", ""value"": ""Spotify Streams""}, ""right"": {""type"": ""column"", ""value"": ""YouTube Views""}}]}, {""op"": ""group_and_aggregate"", ""group_by"": [""Artist""], ""metrics"": [{""function"": ""sum"", ""column"": ""total_streams"", ""as"": ""combined_streams""}]}, {""op"": ""sort_rows"", ""sort_by"": [{""column"": ""combined_streams"", ""direction"": ""desc""}]}, {""op"": ""limit_rows"", ""k"": 5}, {""op"": ""select_columns"", ""columns"": [""Artist"", ""combined_streams""]}]}","## Top 5 Artists by Combined Spotify and YouTube Streams
+
+Based on the analysis, the **5 artists with the highest total streams across Spotify and YouTube combined** are:
+
+| Rank | Artist | Combined Streams |
+|------|--------|------------------|
+| 1 | **Bad Bunny** | 61.4 billion |
+| 2 | **Taylor Swift** | 53.9 billion |
+| 3 | **The Weeknd** | 52.8 billion |
+| 4 | **Ed Sheeran** | 51.3 billion |
+| 5 | **Drake** | 44.0 billion |
+
+**Bad Bunny** leads significantly with approximately **61.4 billion combined streams**, outpacing second-place Taylor Swift by about 7.5 billion streams. The top 4 artists are relatively close in range (51-61 billion), while Drake trails somewhat behind at 44 billion streams.",success
+"Among tracks released after 2020, which artist has the highest average streams-per-playlist on Spotify?",Advanced,"{""steps"": [{""op"": ""derive_columns"", ""derive"": [{""new_column"": ""release_year"", ""type"": ""extract_date_part"", ""column"": ""Release Date"", ""part"": ""year""}]}, {""op"": ""filter_rows"", ""conditions"": [{""column"": ""release_year"", ""operator"": "">"", ""value"": 2020}]}, {""op"": ""derive_columns"", ""derive"": [{""new_column"": ""streams_per_playlist"", ""type"": ""arithmetic"", ""operation"": ""divide"", ""left"": {""type"": ""column"", ""value"": ""Spotify Streams""}, ""right"": {""type"": ""column"", ""value"": ""Spotify Playlist Count""}}]}, {""op"": ""group_and_aggregate"", ""group_by"": [""Artist""], ""metrics"": [{""function"": ""mean"", ""column"": ""streams_per_playlist"", ""as"": ""avg_streams_per_playlist""}]}, {""op"": ""sort_rows"", ""sort_by"": [{""column"": ""avg_streams_per_playlist"", ""direction"": ""desc""}]}, {""op"": ""limit_rows"", ""k"": 1}, {""op"": ""select_columns"", ""columns"": [""Artist"", ""avg_streams_per_playlist""]}]}","Based on the data analysis, **Pasa Michaelson** is the artist with the highest average streams-per-playlist on Spotify among tracks released after 2020.
+
+Their average streams-per-playlist is approximately **1.84 billion** (1,842,758,768 streams per playlist).",success
+"What are the top 3 artists by total cross-platform reach combining Spotify streams, YouTube views, and TikTok views?",Advanced,"{""steps"": [{""op"": ""derive_columns"", ""derive"": [{""new_column"": ""cross_platform_reach"", ""type"": ""arithmetic"", ""operation"": ""add"", ""left"": {""type"": ""column"", ""value"": ""Spotify Streams""}, ""right"": {""type"": ""column"", ""value"": ""YouTube Views""}}]}, {""op"": ""derive_columns"", ""derive"": [{""new_column"": ""total_cross_platform_reach"", ""type"": ""arithmetic"", ""operation"": ""add"", ""left"": {""type"": ""column"", ""value"": ""cross_platform_reach""}, ""right"": {""type"": ""column"", ""value"": ""TikTok Views""}}]}, {""op"": ""group_and_aggregate"", ""group_by"": [""Artist""], ""metrics"": [{""function"": ""sum"", ""column"": ""total_cross_platform_reach"", ""as"": ""total_reach""}]}, {""op"": ""sort_rows"", ""sort_by"": [{""column"": ""total_reach"", ""direction"": ""desc""}]}, {""op"": ""limit_rows"", ""k"": 3}, {""op"": ""select_columns"", ""columns"": [""Artist"", ""total_reach""]}]}","## Top 3 Artists by Total Cross-Platform Reach
+
+Based on the analysis combining Spotify streams, YouTube views, and TikTok views, the top 3 artists are:
+
+| Rank | Artist | Total Cross-Platform Reach |
+|------|--------|---------------------------|
+| 1 | **Kevin MacLeod** | 233.3 billion |
+| 2 | **The King Khan & BBQ Show** | 214.9 billion |
+| 3 | **Bad Bunny** | 105.8 billion |
+
+**Key Insight:** Kevin MacLeod leads with the highest combined reach across all three platforms, followed closely by The King Khan & BBQ Show. Bad Bunny, while ranking third, has approximately half the total reach of the top two artists.",success
+"Which explicit tracks released after 2022 have a Spotify popularity above 75, sorted by TikTok views descending?",Advanced,"{""steps"": [{""op"": ""derive_columns"", ""derive"": [{""new_column"": ""release_year"", ""type"": ""extract_date_part"", ""column"": ""Release Date"", ""part"": ""year""}]}, {""op"": ""filter_rows"", ""conditions"": [{""column"": ""Explicit Track"", ""operator"": ""=="", ""value"": 1}, {""column"": ""release_year"", ""operator"": "">"", ""value"": 2022}, {""column"": ""Spotify Popularity"", ""operator"": "">"", ""value"": 75}]}, {""op"": ""sort_rows"", ""sort_by"": [{""column"": ""TikTok Views"", ""direction"": ""desc""}]}, {""op"": ""select_columns"", ""columns"": [""Track"", ""Artist"", ""Release Date"", ""Spotify Popularity"", ""TikTok Views""]}]}","## Explicit Tracks Released After 2022 with Spotify Popularity Above 75
+
+Based on the data, here are the **20 explicit tracks** meeting your criteria, sorted by TikTok views (descending):
+
+| Rank | Track | Artist | Release Date | Spotify Popularity | TikTok Views |
+|------|-------|--------|--------------|-------------------|--------------|
+| 1 | LALA | Myke Towers | 3/22/2023 | 79 | 7.5B |
+| 2 | Paint The Town Red | Doja Cat | 8/4/2023 | 78 | 7.1B |
+| 3 | TEXAS HOLD 'EM | Beyoncé | 2/10/2024 | 86 | 6.5B |
+| 4 | greedy | Tate McRae | 9/14/2023 | 87 | 5.5B |
+| 5 | Gata Only | FloyyMenor | 2/2/2024 | 92 | 3.8B |
+| 6 | fukumean | Gunna | 6/15/2023 | 80 | 3.3B |
+| 7 | Lovin On Me | Jack Harlow | 11/10/2023 | 83 | 2.9B |
+| 8 | Austin | Dasha | 11/17/2023 | 87 | 2.9B |
+| 9 | La Bebe - Remix | Yng Lvcas | 3/17/2023 | 79 | 2.4B |
+| 10 | MONACO | Bad Bunny | 10/13/2023 | 78 | 2.1B |
+
+**Key Highlights:**
+- **Most TikTok views:** ""LALA"" by Myke Towers (7.5 billion views)
+- **Highest Spotify popularity:** ""Espresso"" by Sabrina Carpenter (95)
+-",success
+"For each release year, what is the average Spotify streams, and which year performs best?",Advanced,"{""steps"": [{""op"": ""derive_columns"", ""derive"": [{""new_column"": ""release_year"", ""type"": ""extract_date_part"", ""column"": ""Release Date"", ""part"": ""year""}]}, {""op"": ""group_and_aggregate"", ""group_by"": [""release_year""], ""metrics"": [{""function"": ""mean"", ""column"": ""Spotify Streams"", ""as"": ""avg_spotify_streams""}]}, {""op"": ""sort_rows"", ""sort_by"": [{""column"": ""avg_spotify_streams"", ""direction"": ""desc""}]}, {""op"": ""select_columns"", ""columns"": [""release_year"", ""avg_spotify_streams""]}]}","## Answer
+
+Based on the data analysis, **1991 is the best-performing release year** with the highest average Spotify streams of **2.02 billion streams**.
+
+### Top 5 Years by Average Spotify Streams:
+
+| Release Year | Average Streams |
+|--------------|-----------------|
+| 1991 | 2.02 billion |
+| 2000 | 1.92 billion |
+| 1987 | 1.88 billion |
+| 2002 | 1.81 billion |
+| 1994 | 1.81 billion |
+
+### Key Insight:
+Older songs from the late 1980s and 1990s tend to have higher average streams than more recent releases (2010s-2017). This likely reflects that only the most enduring, popular classics from those earlier decades remain in the dataset, while newer years include a broader mix of songs that haven't yet accumulated as many streams.",success
+"Among artists with more than 3 tracks, which has the best ratio of Shazam counts to Spotify streams?",Advanced,"{""steps"": [{""op"": ""group_and_aggregate"", ""group_by"": [""Artist""], ""metrics"": [{""function"": ""sum"", ""column"": ""Shazam Counts"", ""as"": ""total_shazam""}, {""function"": ""sum"", ""column"": ""Spotify Streams"", ""as"": ""total_streams""}, {""function"": ""count"", ""column"": ""Track"", ""as"": ""track_count""}]}, {""op"": ""filter_rows"", ""conditions"": [{""column"": ""track_count"", ""operator"": "">"", ""value"": 3}]}, {""op"": ""derive_columns"", ""derive"": [{""new_column"": ""shazam_to_streams_ratio"", ""type"": ""arithmetic"", ""operation"": ""divide"", ""left"": {""type"": ""column"", ""value"": ""total_shazam""}, ""right"": {""type"": ""column"", ""value"": ""total_streams""}}]}, {""op"": ""sort_rows"", ""sort_by"": [{""column"": ""shazam_to_streams_ratio"", ""direction"": ""desc""}]}, {""op"": ""limit_rows"", ""k"": 1}, {""op"": ""select_columns"", ""columns"": [""Artist"", ""shazam_to_streams_ratio"", ""track_count""]}]}","Based on the data analysis results, **no answer can be provided** to this question.
+
+The analysis returned an empty DataFrame, meaning **no artists met the criteria** of having more than 3 tracks in the dataset, or there may have been missing/invalid data in the Shazam counts or Spotify streams columns that prevented the calculation.
+
+To get a meaningful answer, the analysis would need to be re-run with either:
+- A lower track threshold (e.g., more than 1 or 2 tracks)
+- Data cleaning to address missing values in the Shazam or streams columns",success
