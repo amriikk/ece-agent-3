@@ -38,7 +38,7 @@ def generate_answer(question: str, result_df: pd.DataFrame) -> str:
                     f"I ran a data analysis on a Spotify dataset to answer this question:\n"
                     f"'{question}'\n\n"
                     f"Here are the results:\n{preview}\n\n"
-                    f"Please give a clear, concise answer to the question based only "
+                    f"Please give a clear, concise answer to the question based only. "
                     f"on this data. Be specific and include the actual numbers."
                 )
             }
